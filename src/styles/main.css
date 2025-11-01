@@ -1,0 +1,13 @@
+/* Main CSS - Import Order Matters! */
+
+/* 1. Normalize browser defaults */
+@import './normalize.css';
+
+/* 2. CSS Custom Properties (variables) */
+@import './variables.css';
+
+/* 3. Base styles and resets */
+@import './base.css';
+
+/* 4. Component styles (imported by components themselves) */
+/* Components import their own CSS files as needed */
