@@ -1,10 +1,10 @@
 # Breathing Shapes - TODO
 
 ## Current Status
-✅ Project structure created and refactored
-✅ All components separated and optimized
-✅ Custom CSS implemented (Tailwind removed)
-✅ Performance improvements with useReducer and useMemo
+✅ Project structure created and refactored  
+✅ All components separated and optimized  
+✅ Custom CSS implemented (Tailwind removed)  
+✅ Performance improvements with useReducer and useMemo  
 
 ## Project Setup
 - [ ] Run `npm install` to install dependencies

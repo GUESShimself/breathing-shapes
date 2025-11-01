@@ -1,12 +1,12 @@
 .visualization-container {
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-xl);
 }
 
 /* Shape outline */
 .shape-outline {
   fill: none;
-  stroke: #475569;
+  stroke: var(--color-bg-lighter);
   stroke-width: 3;
   opacity: 0.5;
 }
@@ -14,21 +14,21 @@
 /* Bright trailing segment */
 .shape-trail {
   fill: none;
-  stroke: #22d3ee;
+  stroke: var(--color-primary);
   stroke-width: 3;
   opacity: 1;
 }
 
 /* Main circle */
 .main-circle {
-  fill: #22d3ee;
+  fill: var(--color-primary);
   transition: r 0.25s ease-in-out;
 }
 
 /* Ripple effects */
 .ripple {
   fill: none;
-  stroke: #22d3ee;
+  stroke: var(--color-primary);
   stroke-width: 2;
   opacity: 0.6;
 }
