@@ -1,0 +1,35 @@
+.type-selector {
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.type-button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #334155;
+  background-color: #1e293b;
+  color: #22d3ee;
+}
+
+.type-button:hover {
+  background-color: #334155;
+  transform: translateY(-1px);
+}
+
+.type-button.active {
+  background-color: #22d3ee;
+  color: #0f172a;
+  border-color: #22d3ee;
+  box-shadow: 0 10px 15px -3px rgba(34, 211, 238, 0.3),
+              0 4px 6px -2px rgba(34, 211, 238, 0.2);
+}
+
+.type-button.active:hover {
+  background-color: #06b6d4;
+  transform: translateY(-1px);
+}
