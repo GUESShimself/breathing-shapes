@@ -24,6 +24,7 @@
 - [ ] Create guided breathing sessions with multiple cycles
 
 ### UI/UX Improvements
+- [ ] Add fading gradient trail effect (research multi-layer approach vs GSAP vs SVG animate)
 - [ ] Add smooth transitions between breathing type changes
 - [ ] Improve mobile responsiveness
 - [ ] Add keyboard shortcuts (space to start/stop, etc.)
@@ -55,3 +56,81 @@
 - All magic numbers extracted to constants
 - Animation loop optimized with useReducer
 - Memoization added for expensive calculations
+
+## Potential UI plan
+
+### Information architecture
+
+1. Bottom nav (3 tabs)
+    - Breathe: run a session (your current screen evolves here)
+    - Build: create/edit presets (patterns + timings)
+    - History: stats, streaks, recent sessions
+2. Pattern discovery
+   - At the top of **Breathe**, replace two buttons with a **horizontal preset carousel** (animated preview cards: Triangle, Square, 4-7-8, Box variations, etc.). Include a “+ New” card that sends to **Build**.
+
+### Breathe (in-session) layout
+
+- Header: preset name • cycles remaining • tempo (tap to change).
+- Canvas: your animated SVG shape; add subtle segment labels (“In / Hold / Out / Hold”) and a faint progress ring.
+- Footer controls: Play/Pause, Skip phase, Restart, Sound/Haptics toggles.
+- Swipe-up Bottom Sheet (quick settings while running):
+  - Cycle count, total duration
+  - Voice cues (off / counts / guidance), background sound
+  - Theme (light/dark/high contrast), Reduce Motion respect
+- Gestures: tap canvas = pause/resume, long-press = quick restart.
+
+### Build (preset editor)
+
+- **Preset list** (cards with tiny animated thumbnails) + “Create preset”.
+- **Editor** (two interchangeable views):
+  1. **Radial phase editor**: the current shape becomes an **interactive segmented ring**; **drag segment handles** to change each phase’s length; color-code segments (In/Hold/Out/Hold).
+  2. **Timeline editor**: stacked rows for phases with **duration sliders**; optional “**link durations**” to scale all by a master tempo.
+- Fields: name, shape (triangle, square, circle), phases (add/remove), per-phase duration, cycle count, sound/haptic style.
+- **Preview pane**: live mini simulation.
+- **Save as preset** (star = favorite); allow **Share** (JSON or deep link) later.
+
+### History & stats
+
+- **Session summary cards**: date, preset, minutes, cycles.
+- **Charts**: time spent by pattern, streaks, average session length.
+- **Badges** (gentle): “First week”, “Focused 50”.
+- CTA: “Repeat last session”.
+
+### Customization & preferences
+
+- **Global Settings** (from profile icon):
+  - Default preset, default cycle count/tempo
+  - Theme + **High-contrast** palette, **Reduce Motion **toggle
+  - Sound pack/haptics intensity
+  - Reminders (daily, wind-down)
+- **Per-preset** overrides live in the preset itself.
+
+### Visual system
+
+- **Preset chips/cards**: color as semantic cue (In=cool, Hold=neutral, Out=warm), but always pair with text/icons for accessibility.
+- **On-canvas cues**: pulsing dot + ring you already have; add micro tick at each phase transition.
+- **Empty states**: “No history yet — try a 1-minute triangle session.”
+
+### Accessibility & calm-tech
+
+- Respect OS **Reduce Motion** (swap to fade/scale instead of rotating).
+- **Voice/Count** options, captions for guidance.
+- Large tap targets; one-hand reachable controls.
+- Colorblind-safe palette; check contrast on dark backgrounds.
+
+### Session types
+
+- **Single session** (current), **Guided** (scripted multi-preset flow), **Loop** (until stopped). Picker sits above the canvas or in the quick settings sheet.
+
+### Componentization (fits your TS + modular goals)
+
+- `PresetCard`, `PresetCarousel`, `BottomSheet`, `PhaseRingEditor`, `TimelineEditor`, `ProgressRing`, `TransportControls`, `QuickSettings`, `StatsChart`.
+- Drive UI from a **pattern schema** (`{name, shape, phases:[{type:'in'|'hold'|'out', ms}], cycles, tempo, cues}`) so new patterns drop in without UI rewrites.
+
+### Little delights (optional)
+
+- Haptic beat at phase edges.
+- Ambient backgrounds that subtly shift with breathing (tone down under Reduce Motion).
+- Lock screen / widget: simple progress ring + play/pause.
+
+This structure keeps the current calm single-screen feel while giving room to grow into presets, editing, guided flows, and stats—without cluttering the breathing space.
