@@ -1,29 +1,46 @@
 # Breathing Shapes - TODO
 
 ## Current Status
-✅ Project structure created and refactored  
-✅ All components separated and optimized  
-✅ Custom CSS implemented (Tailwind removed)  
-✅ Performance improvements with useReducer and useMemo  
+✅ Project structure created and refactored
+✅ All components separated and optimized
+✅ Custom CSS implemented (Tailwind removed)
+✅ Performance improvements with useReducer and useMemo
+✅ **v0.2.0 Released** - Preset system foundation complete
+✅ Git workflow established (main/develop/feature branches)
+✅ Versioning and CHANGELOG.md implemented
 
 ## Project Setup
-- [ ] Run `npm install` to install dependencies
-- [ ] Run `npm run dev` to test the application
+- [x] Run `npm install` to install dependencies
+- [x] Run `npm run dev` to test the application
 - [ ] Verify all features work correctly
+- [ ] Deploy v0.2.0 to GitHub Pages for user testing
+
+## Phase 1: Preset System ✅ COMPLETE (v0.2.0)
+- [x] Create TypeScript type definitions for presets
+- [x] Implement localStorage persistence layer
+- [x] Build usePresets hook for state management
+- [x] Create default breathing patterns (Triangle, Square, Quick Focus, Deep Relaxation)
+- [x] Design and build PresetCard component
+- [x] Design and build PresetCarousel component
+- [x] Replace BreathingTypeSelector with PresetCarousel
+- [x] Integrate preset system with BreathingApp
+- [x] Git branching strategy and conventional commits
+- [x] Version tagging (v0.2.0)
 
 ## Future Enhancements
 
 ### Features
-- [ ] Add more breathing patterns (Box breathing variations, 4-7-8 breathing)
+- [x] Add more breathing patterns (4 default presets created)
+- [x] Save user preferences to localStorage (preset system uses localStorage)
+- [x] Add customizable timing for each phase (presets support custom durations per phase)
 - [ ] Add sound/audio cues for phase changes
 - [ ] Add haptic feedback for mobile devices
 - [ ] Implement dark/light theme toggle
-- [ ] Add customizable timing for each phase
-- [ ] Save user preferences to localStorage
 - [ ] Add breathing session history/statistics
 - [ ] Create guided breathing sessions with multiple cycles
 
 ### UI/UX Improvements
+- [ ] Fade carousel up and away once user starts their breathing session. Fade back in once session is finished
 - [ ] Add fading gradient trail effect (research multi-layer approach vs GSAP vs SVG animate)
 - [ ] Add smooth transitions between breathing type changes
 - [ ] Improve mobile responsiveness
@@ -66,7 +83,8 @@
     - Build: create/edit presets (patterns + timings)
     - History: stats, streaks, recent sessions
 2. Pattern discovery
-   - At the top of **Breathe**, replace two buttons with a **horizontal preset carousel** (animated preview cards: Triangle, Square, 4-7-8, Box variations, etc.). Include a “+ New” card that sends to **Build**.
+   - [x] At the top of **Breathe**, replace two buttons with a **horizontal preset carousel** (animated preview cards: Triangle, Square, 4-7-8, Box variations, etc.).
+   - [ ] Include a “+ New” card that sends to **Build**.
 
 ### Breathe (in-session) layout
 
