@@ -1,6 +1,6 @@
 .preset-card {
-  flex-shrink: 0;
-  width: 200px;
+  flex-grow: 1;
+  min-width: 200px;
   padding: var(--spacing-lg);
   background-color: var(--color-bg-medium);
   border: 2px solid var(--color-bg-light);
@@ -103,4 +103,9 @@
   font-size: var(--font-size-xs);
   border-radius: var(--radius-sm);
   font-weight: var(--font-weight-medium);
+}
+
+.preset-card.selected .preset-card-description,
+.preset-card.selected .preset-card-footer {
+  opacity: 1;
 }

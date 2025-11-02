@@ -32,7 +32,7 @@ export const defaultPresets: BreathingPattern[] = [
   },
   {
     id: 'square-box',
-    name: 'Box Breathing',
+    name: 'Square Breathing',
     description: '4-phase breathing for stress relief',
     shape: 'square',
     phases: [
