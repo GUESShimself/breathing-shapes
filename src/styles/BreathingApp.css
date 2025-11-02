@@ -7,3 +7,9 @@
   justify-content: center;
   padding: var(--spacing-xl);
 }
+
+.loading {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+}
