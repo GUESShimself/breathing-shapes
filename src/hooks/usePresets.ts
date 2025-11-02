@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { BreathingPattern, PresetStorage } from '../types/preset';
+import { BreathingPattern } from '../types/preset';
 import {
   getPresetsFromStorage,
   savePresetsToStorage,

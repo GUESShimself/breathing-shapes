@@ -1,13 +1,6 @@
 import { BreathingPattern } from '../types/preset';
 
 /**
- * Calculate total duration for a breathing pattern
- */
-const calculateDuration = (phases: Array<{ duration: number }>): number => {
-  return phases.reduce((sum, phase) => sum + phase.duration, 0);
-};
-
-/**
  * Default breathing patterns included with the app
  */
 export const defaultPresets: BreathingPattern[] = [
