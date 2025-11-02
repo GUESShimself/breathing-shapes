@@ -1,6 +1,6 @@
 {
   "name": "breathing-shapes",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "A breathing meditation app with triangle and square breathing patterns",
   "main": "src/components/BreathingApp.tsx",
   "scripts": {
