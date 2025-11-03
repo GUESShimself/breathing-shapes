@@ -1,6 +1,28 @@
 .preset-carousel {
   width: 100%;
   margin-bottom: var(--spacing-md);
+  overflow: hidden;
+  transition: max-height 600ms ease-out,
+              margin-bottom 600ms ease-out;
+  max-height: 1000px;
+}
+
+.preset-carousel-hidden {
+  max-height: 0;
+  margin-bottom: 0;
+  pointer-events: none;
+}
+
+.preset-carousel-inner {
+  transition: transform 600ms ease-out,
+              opacity 600ms ease-out;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.preset-carousel-hidden .preset-carousel-inner {
+  transform: translateY(-2rem);
+  opacity: 0;
 }
 
 .preset-carousel-title {
