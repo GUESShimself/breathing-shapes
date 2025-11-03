@@ -2,9 +2,9 @@
   width: 100%;
   margin-bottom: var(--spacing-md);
   overflow: hidden;
-  transition: max-height 600ms ease-out,
-              margin-bottom 600ms ease-out;
   max-height: 1000px;
+  transition: max-height var(--transition-out-slow) 500ms,
+              margin-bottom var(--transition-out-slow) 500ms;
 }
 
 .preset-carousel-hidden {
@@ -14,14 +14,14 @@
 }
 
 .preset-carousel-inner {
-  transition: transform 600ms ease-out,
-              opacity 600ms ease-out;
+  transition: transform var(--transition-out-slow),
+              opacity var(--transition-out-slow);
   transform: translateY(0);
   opacity: 1;
 }
 
 .preset-carousel-hidden .preset-carousel-inner {
-  transform: translateY(-2rem);
+  transform: translateY(-100%);
   opacity: 0;
 }
 
