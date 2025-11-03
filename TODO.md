@@ -6,6 +6,7 @@
 ✅ Custom CSS implemented (Tailwind removed)
 ✅ Performance improvements with useReducer and useMemo
 ✅ **v0.2.0 Released** - Preset system foundation complete
+✅ **v0.2.1 Released** - Carousel fade animation and mobile layout improvements
 ✅ Git workflow established (main/develop/feature branches)
 ✅ Versioning and CHANGELOG.md implemented
 
@@ -40,10 +41,10 @@
 - [ ] Create guided breathing sessions with multiple cycles
 
 ### UI/UX Improvements
-- [ ] Fade carousel up and away once user starts their breathing session. Fade back in once session is finished
+- [x] Fade carousel up and away once user starts their breathing session. Fade back in once session is finished (v0.2.1)
+- [x] Improve mobile responsiveness - reduced visualization height (v0.2.1)
 - [ ] Add fading gradient trail effect (research multi-layer approach vs GSAP vs SVG animate)
 - [ ] Add smooth transitions between breathing type changes
-- [ ] Improve mobile responsiveness
 - [ ] Add keyboard shortcuts (space to start/stop, etc.)
 - [ ] Add accessibility features (screen reader support, reduced motion)
 - [ ] Create onboarding/tutorial for first-time users
