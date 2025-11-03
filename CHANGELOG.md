@@ -13,6 +13,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add history and statistics tracking
 - Implement bottom navigation
 
+## [0.2.1] - 2025-01-03
+
+### Added
+- **Carousel Fade Animation**
+  - Smooth fade-out and slide-up animation when breathing session starts
+  - Two-stage animation: fade/slide (500ms) then height collapse (500ms)
+  - Carousel fades back in when session stops or resets
+  - Pointer events disabled on hidden carousel
+- **Design System Enhancements**
+  - Added ease-out transition variables to CSS custom properties
+  - Debug CSS variables for development
+
+### Changed
+- Reduced visualization SVG height from 350px to 300px for better mobile layout
+- Moved shapes up 50px (center Y: 200 → 150) to prevent clipping
+- Adjusted square shape coordinates for new positioning
+- Updated carousel animation to use responsive `translateY(-100%)` instead of fixed rem values
+- Improved carousel spacing with reduced bottom margin
+
+### Fixed
+- Square shape no longer gets cut off when rotating in smaller viewport
+- Visualization now properly centered in reduced height SVG
+
 ## [0.2.0] - 2025-01-01
 
 ### Added
@@ -78,5 +101,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version History
 
+- **0.2.1** - Carousel fade animation and mobile layout improvements
 - **0.2.0** - Preset system foundation
 - **0.1.0** - Initial refactored architecture

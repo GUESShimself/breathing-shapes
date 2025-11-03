@@ -1,6 +1,28 @@
 .preset-carousel {
   width: 100%;
   margin-bottom: var(--spacing-md);
+  overflow: hidden;
+  max-height: 1000px;
+  transition: max-height var(--transition-out-slow) 500ms,
+              margin-bottom var(--transition-out-slow) 500ms;
+}
+
+.preset-carousel-hidden {
+  max-height: 0;
+  margin-bottom: 0;
+  pointer-events: none;
+}
+
+.preset-carousel-inner {
+  transition: transform var(--transition-out-slow),
+              opacity var(--transition-out-slow);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.preset-carousel-hidden .preset-carousel-inner {
+  transform: translateY(-100%);
+  opacity: 0;
 }
 
 .preset-carousel-title {

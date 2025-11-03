@@ -65,6 +65,7 @@ export const BreathingApp: React.FC = () => {
         presets={presets}
         selectedPresetId={selectedPreset.id}
         onSelectPreset={handlePresetChange}
+        isActive={isActive}
       />
 
       <BreathingVisualization

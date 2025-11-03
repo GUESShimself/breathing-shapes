@@ -47,6 +47,11 @@
   --transition-base: 300ms ease;
   --transition-slow: 500ms ease;
 
+  --transition-out-fast: 150ms ease-out;
+  --transition-out-base: 300ms ease-out;
+  --transition-out-slow: 500ms ease-out;
+
+
   /* Typography */
   --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -76,4 +81,10 @@
   --z-index-modal: 1040;
   --z-index-popover: 1050;
   --z-index-tooltip: 1060;
+  
+  /* Debug */
+  --color-debug: #ff0000;
+  --transition-debug: 3s ease-in-out;
+  --outline-debug: 2px solid var(--color-debug);
+
 }
