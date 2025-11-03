@@ -44,7 +44,7 @@ export const BreathingVisualization: React.FC<BreathingVisualizationProps> = ({
 
   return (
     <div className="visualization-container">
-      <svg width="400" height="350" viewBox="0 0 400 350">
+      <svg width="400" height="300" viewBox="0 0 400 300">
         <defs>
           <filter id="glow">
             <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
@@ -55,7 +55,7 @@ export const BreathingVisualization: React.FC<BreathingVisualizationProps> = ({
           </filter>
         </defs>
 
-        <g transform={`rotate(${rotation} 200 200)`}>
+        <g transform={`rotate(${rotation} 200 150)`}>
           {/* Dim base outline */}
           <path
             d={shapePath}

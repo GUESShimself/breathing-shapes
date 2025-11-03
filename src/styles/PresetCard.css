@@ -1,6 +1,5 @@
 .preset-card {
-  flex-grow: 1;
-  min-width: 200px;
+  flex: 1 0 200px;
   padding: var(--spacing-lg);
   background-color: var(--color-bg-medium);
   border: 2px solid var(--color-bg-light);
@@ -42,14 +41,6 @@
   font-size: var(--font-size-xl);
   background-color: var(--color-primary);
   color: var(--color-text-dark);
-}
-
-.preset-card-icon-triangle {
-  background-color: var(--color-primary);
-}
-
-.preset-card-icon-square {
-  background-color: var(--color-primary-dark);
 }
 
 .preset-card-favorite {
@@ -106,6 +97,8 @@
 }
 
 .preset-card.selected .preset-card-description,
-.preset-card.selected .preset-card-footer {
-  opacity: 1;
+.preset-card.selected .preset-card-footer,
+.preset-card:hover .preset-card-description,
+.preset-card:hover .preset-card-footer {
+  opacity: 0.9;
 }
