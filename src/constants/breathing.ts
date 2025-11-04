@@ -2,14 +2,14 @@ export const PHASE_DURATION = 4000; // milliseconds per phase
 
 export const TRIANGLE_RADIUS = 115.47;
 export const TRIANGLE_CENTER_X = 200;
-export const TRIANGLE_CENTER_Y = 150;
+export const TRIANGLE_CENTER_Y = 175;
 export const TRIANGLE_ANGLES = [0, 120, 240]; // degrees
 
 export const SQUARE_POINTS = [
-  { x: 100, y: 50 },
-  { x: 300, y: 50 },
-  { x: 300, y: 250 },
-  { x: 100, y: 250 }
+  { x: 100, y: 75 },
+  { x: 300, y: 75 },
+  { x: 300, y: 275 },
+  { x: 100, y: 275 }
 ];
 
 export const PATH_LENGTHS = {
