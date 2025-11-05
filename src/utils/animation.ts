@@ -7,8 +7,8 @@ import { BreathingType } from '../types/breathing';
  */
 export const calculateTrailDashArray = (
   breathingType: BreathingType,
-  currentPhase: number,
-  phaseProgress: number,
+  _currentPhase: number,
+  _phaseProgress: number,
   phases: number,
   cumulativeProgress: number
 ): string => {

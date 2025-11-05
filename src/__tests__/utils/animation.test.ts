@@ -103,7 +103,6 @@ describe('calculateTrailDashOffset', () => {
   it('should position trail behind the circle', () => {
     const breathingType = 'triangle';
     const phases = 3;
-    const pathLength = PATH_LENGTHS[breathingType];
 
     // At some point in the animation
     const cumulativeProgress = 1.5; // Halfway through second phase
@@ -172,7 +171,6 @@ describe('calculateDegreesPerMs', () => {
   it('should calculate correct rotation speed for square (4 phases)', () => {
     const phaseDuration = 4000;
     const phases = 4;
-    const totalCycleDuration = phaseDuration * phases; // 16 seconds
 
     const degreesPerMs = calculateDegreesPerMs(phaseDuration, phases);
 

@@ -13,7 +13,6 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import type { AnimationState, AnimationAction } from '@types/breathing';
 
 // Import the calculation functions - we need to export them from the hook file first
 // For now, we'll test them indirectly through the reducer behavior
