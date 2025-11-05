@@ -3,6 +3,50 @@ import { AnimationState, AnimationAction } from '../types/breathing';
 import { PULSE_INTERVAL, PULSE_DURATION } from '../constants/breathing';
 
 /**
+ * Calculate scale based on phase and progress
+ * Inhale (0): 0.95 → 1.1
+ * Hold Full (1): 1.1 (maintain)
+ * Exhale (2): 1.1 → 0.95
+ * Hold Empty (3): 0.95 (maintain)
+ */
+const calculateScale = (phase: number, progress: number, totalPhases: number): number => {
+  if (totalPhases === 3) {
+    // Triangle: Inhale, Hold, Exhale
+    if (phase === 0) return 0.95 + (progress * 0.15); // Inhale
+    if (phase === 1) return 1.1; // Hold
+    return 1.1 - (progress * 0.15); // Exhale
+  } else {
+    // Square: Inhale, Hold, Exhale, Hold
+    if (phase === 0) return 0.95 + (progress * 0.15); // Inhale
+    if (phase === 1) return 1.1; // Hold Full
+    if (phase === 2) return 1.1 - (progress * 0.15); // Exhale
+    return 0.95; // Hold Empty
+  }
+};
+
+/**
+ * Calculate glow intensity based on phase and progress
+ * Inhale (0): 0 → 1.0
+ * Hold Full (1): 1.0 (bright)
+ * Exhale (2): 1.0 → 0.3 (maintain then dim)
+ * Hold Empty (3): 0.3 (dim)
+ */
+const calculateGlowIntensity = (phase: number, progress: number, totalPhases: number): number => {
+  if (totalPhases === 3) {
+    // Triangle: Inhale, Hold, Exhale
+    if (phase === 0) return progress * 1.0; // Inhale: 0 → 1.0
+    if (phase === 1) return 1.0; // Hold: bright
+    return 1.0 - (progress * 0.7); // Exhale: 1.0 → 0.3
+  } else {
+    // Square: Inhale, Hold, Exhale, Hold
+    if (phase === 0) return progress * 1.0; // Inhale: 0 → 1.0
+    if (phase === 1) return 1.0; // Hold Full: bright
+    if (phase === 2) return 1.0 - (progress * 0.7); // Exhale: 1.0 → 0.3
+    return 0.3; // Hold Empty: dim
+  }
+};
+
+/**
  * Reducer for managing animation state
  */
 const animationReducer = (state: AnimationState, action: AnimationAction): AnimationState => {
@@ -12,20 +56,29 @@ const animationReducer = (state: AnimationState, action: AnimationAction): Anima
 
       const newRotation = (state.rotation - (delta * degreesPerMs)) % 360;
       const newProgress = state.phaseProgress + (delta / phaseDuration);
+      const progressDelta = delta / phaseDuration;
+      const newCumulativeProgress = state.cumulativeProgress + progressDelta;
 
       if (newProgress >= 1) {
+        const newPhase = (state.currentPhase + 1) % phases;
         return {
           ...state,
           rotation: newRotation,
           phaseProgress: 0,
-          currentPhase: (state.currentPhase + 1) % phases
+          currentPhase: newPhase,
+          scale: calculateScale(newPhase, 0, phases),
+          glowIntensity: calculateGlowIntensity(newPhase, 0, phases),
+          cumulativeProgress: newCumulativeProgress
         };
       }
 
       return {
         ...state,
         rotation: newRotation,
-        phaseProgress: newProgress
+        phaseProgress: newProgress,
+        scale: calculateScale(state.currentPhase, newProgress, phases),
+        glowIntensity: calculateGlowIntensity(state.currentPhase, newProgress, phases),
+        cumulativeProgress: newCumulativeProgress
       };
     }
     case 'TRIGGER_PULSE':
@@ -37,7 +90,10 @@ const animationReducer = (state: AnimationState, action: AnimationAction): Anima
         currentPhase: 0,
         phaseProgress: 0,
         rotation: 0,
-        shouldPulse: false
+        shouldPulse: false,
+        scale: 0.95,
+        glowIntensity: 0,
+        cumulativeProgress: 0
       };
     default:
       return state;
@@ -48,7 +104,10 @@ const initialState: AnimationState = {
   currentPhase: 0,
   phaseProgress: 0,
   rotation: 0,
-  shouldPulse: false
+  shouldPulse: false,
+  scale: 0.95,
+  glowIntensity: 0,
+  cumulativeProgress: 0
 };
 
 /**

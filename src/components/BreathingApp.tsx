@@ -76,6 +76,9 @@ export const BreathingApp: React.FC = () => {
         shouldPulse={state.shouldPulse}
         isActive={isActive}
         phases={phases}
+        scale={state.scale}
+        glowIntensity={state.glowIntensity}
+        cumulativeProgress={state.cumulativeProgress}
       />
 
       <PhaseIndicator

@@ -10,6 +10,9 @@ export interface AnimationState {
   phaseProgress: number;
   rotation: number;
   shouldPulse: boolean;
+  scale: number;
+  glowIntensity: number;
+  cumulativeProgress: number; // Cumulative progress that never resets, for continuous trail
 }
 
 export type AnimationAction =

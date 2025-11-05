@@ -25,24 +25,24 @@
   transition: r 0.25s ease-in-out;
 }
 
-/* Ripple effects */
-.ripple {
+/* Pulse effects */
+.pulse {
   fill: none;
   stroke: var(--color-primary);
   stroke-width: 2;
   opacity: 0.6;
 }
 
-.ripple-1 {
-  animation: ripple 0.5s ease-out forwards;
+.pulse-1 {
+  animation: pulse 0.5s ease-out forwards;
 }
 
-.ripple-2 {
-  animation: ripple 0.5s ease-out forwards;
+.pulse-2 {
+  animation: pulse 0.5s ease-out forwards;
   animation-delay: 0.05s;
 }
 
-@keyframes ripple {
+@keyframes pulse {
   0% {
     r: 6px;
     opacity: 0.6;
@@ -51,4 +51,22 @@
     r: 30px;
     opacity: 0;
   }
+}
+
+/* Breathing ripples - layered expanding effect */
+.breathing-ripple {
+  transform-origin: center;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.breathing-ripple-1 {
+  transform: scale(1.08);
+}
+
+.breathing-ripple-2 {
+  transform: scale(1.16);
+}
+
+.breathing-ripple-3 {
+  transform: scale(1.24);
 }
