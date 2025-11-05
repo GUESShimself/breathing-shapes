@@ -4,13 +4,13 @@ import {
   TRIANGLE_CENTER_Y,
   TRIANGLE_RADIUS,
   TRIANGLE_ANGLES,
-  SQUARE_POINTS
+  SQUARE_POINTS,
 } from '../constants/breathing';
 
 /**
  * Converts degrees to radians
  */
-const degreesToRadians = (degrees: number): number => degrees * Math.PI / 180;
+const degreesToRadians = (degrees: number): number => (degrees * Math.PI) / 180;
 
 /**
  * Calculates the vertices of a triangle
@@ -20,7 +20,7 @@ export const getTrianglePoints = (): Position[] => {
     const radians = degreesToRadians(angle);
     return {
       x: TRIANGLE_CENTER_X + TRIANGLE_RADIUS * Math.cos(radians),
-      y: TRIANGLE_CENTER_Y + TRIANGLE_RADIUS * Math.sin(radians)
+      y: TRIANGLE_CENTER_Y + TRIANGLE_RADIUS * Math.sin(radians),
     };
   });
 };
@@ -40,7 +40,7 @@ export const getCirclePosition = (
 
     return {
       x: start.x + (end.x - start.x) * phaseProgress,
-      y: start.y + (end.y - start.y) * phaseProgress
+      y: start.y + (end.y - start.y) * phaseProgress,
     };
   } else {
     const start = SQUARE_POINTS[currentPhase];
@@ -48,7 +48,7 @@ export const getCirclePosition = (
 
     return {
       x: start.x + (end.x - start.x) * phaseProgress,
-      y: start.y + (end.y - start.y) * phaseProgress
+      y: start.y + (end.y - start.y) * phaseProgress,
     };
   }
 };

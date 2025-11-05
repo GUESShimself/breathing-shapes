@@ -47,6 +47,7 @@ Tests the critical trail animation calculations:
 - **Rotation speed**: Validates degrees-per-millisecond calculations
 
 **Key test:**
+
 ```typescript
 it('should never reset trail between cycles', () => {
   // End of cycle 1: trail has length X
@@ -70,6 +71,7 @@ Tests shape calculations for triangle and square breathing:
 - **Phase transitions**: Confirms smooth movement between vertices
 
 **Key test:**
+
 ```typescript
 it('should interpolate linearly along each edge', () => {
   // Circle should move in a straight line along each edge
@@ -92,6 +94,7 @@ Tests the breathing effect calculations:
 - **Breathing rhythm**: Validates the grow→hold→shrink pattern
 
 **Key test:**
+
 ```typescript
 it('should demonstrate the breathing rhythm', () => {
   // Inhale: scale increases
@@ -157,26 +160,32 @@ expect(array).toHaveLength(3);
 ## Debugging Tests
 
 ### Run specific test file
+
 ```bash
 npm test animation.test.ts
 ```
 
 ### Run specific test by name
+
 ```bash
 npm test -t "should grow trail length"
 ```
 
 ### Use the UI
+
 ```bash
 npm run test:ui
 ```
+
 The UI provides:
+
 - Visual test results
 - File watching with hot reload
 - Detailed error messages
 - Code coverage visualization
 
 ### Add debug output
+
 ```typescript
 it('should calculate correctly', () => {
   const result = myFunction(input);
@@ -190,11 +199,13 @@ it('should calculate correctly', () => {
 Testing is configured in two files:
 
 ### `vitest.config.ts`
+
 - Test environment: happy-dom (lightweight DOM simulation)
 - Path aliases: Same as main app (@utils, @hooks, etc.)
 - Setup files: Runs before tests
 
 ### `vitest.setup.ts`
+
 - Imports jest-dom matchers (toBeInTheDocument, etc.)
 - Cleanup after each test
 
@@ -207,6 +218,7 @@ npm run test:coverage
 ```
 
 This creates a `coverage/` directory with:
+
 - HTML report (open `coverage/index.html` in browser)
 - Text summary in terminal
 - Line-by-line coverage data

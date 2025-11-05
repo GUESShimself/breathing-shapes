@@ -26,12 +26,7 @@ export const BreathingApp: React.FC = () => {
     [phaseDuration, phases]
   );
 
-  const { state, reset } = useBreathingAnimation(
-    isActive,
-    phaseDuration,
-    phases,
-    degreesPerMs
-  );
+  const { state, reset } = useBreathingAnimation(isActive, phaseDuration, phases, degreesPerMs);
 
   const handleStart = () => setIsActive(true);
 
@@ -81,10 +76,7 @@ export const BreathingApp: React.FC = () => {
         cumulativeProgress={state.cumulativeProgress}
       />
 
-      <PhaseIndicator
-        breathingType={breathingType}
-        currentPhase={state.currentPhase}
-      />
+      <PhaseIndicator breathingType={breathingType} currentPhase={state.currentPhase} />
 
       <ControlButtons
         isActive={isActive}

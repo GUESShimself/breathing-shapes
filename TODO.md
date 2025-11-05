@@ -1,6 +1,7 @@
 # Breathing Shapes - TODO
 
 ## Current Status
+
 ✅ Project structure created and refactored
 ✅ All components separated and optimized
 ✅ Custom CSS implemented (Tailwind removed)
@@ -11,12 +12,14 @@
 ✅ Versioning and CHANGELOG.md implemented
 
 ## Project Setup
+
 - [x] Run `npm install` to install dependencies
 - [x] Run `npm run dev` to test the application
 - [ ] Verify all features work correctly
 - [ ] Deploy v0.2.0 to GitHub Pages for user testing
 
 ## Phase 1: Preset System ✅ COMPLETE (v0.2.0)
+
 - [x] Create TypeScript type definitions for presets
 - [x] Implement localStorage persistence layer
 - [x] Build usePresets hook for state management
@@ -31,6 +34,7 @@
 ## Future Enhancements
 
 ### Features
+
 - [x] Add more breathing patterns (4 default presets created)
 - [x] Save user preferences to localStorage (preset system uses localStorage)
 - [x] Add customizable timing for each phase (presets support custom durations per phase)
@@ -41,6 +45,7 @@
 - [ ] Create guided breathing sessions with multiple cycles
 
 ### UI/UX Improvements
+
 - [x] Fade carousel up and away once user starts their breathing session. Fade back in once session is finished (v0.2.1)
 - [x] Improve mobile responsiveness - reduced visualization height (v0.2.1)
 - [ ] Add fading gradient trail effect (research multi-layer approach vs GSAP vs SVG animate)
@@ -51,6 +56,7 @@
 - [ ] Add animation speed controls
 
 ### Technical Improvements
+
 - [ ] Add unit tests for utility functions
 - [ ] Add component tests with React Testing Library
 - [ ] Set up E2E tests with Playwright/Cypress
@@ -61,15 +67,18 @@
 - [ ] Add error boundaries
 
 ### Documentation
+
 - [ ] Add JSDoc comments to all functions
 - [ ] Create component documentation/storybook
 - [ ] Add contributing guidelines
 - [ ] Create architecture decision records (ADRs)
 
 ## Bugs/Issues
+
 - [ ] None currently identified
 
 ## Notes
+
 - Original single-file component successfully refactored into modular architecture
 - All magic numbers extracted to constants
 - Animation loop optimized with useReducer
@@ -80,9 +89,9 @@
 ### Information architecture
 
 1. Bottom nav (3 tabs)
-    - Breathe: run a session (your current screen evolves here)
-    - Build: create/edit presets (patterns + timings)
-    - History: stats, streaks, recent sessions
+   - Breathe: run a session (your current screen evolves here)
+   - Build: create/edit presets (patterns + timings)
+   - History: stats, streaks, recent sessions
 2. Pattern discovery
    - [x] At the top of **Breathe**, replace two buttons with a **horizontal preset carousel** (animated preview cards: Triangle, Square, 4-7-8, Box variations, etc.).
    - [ ] Include a “+ New” card that sends to **Build**.

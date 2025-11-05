@@ -6,5 +6,5 @@ import BreathingApp from './components/BreathingApp';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BreathingApp />
-  </React.StrictMode>,
+  </React.StrictMode>
 );

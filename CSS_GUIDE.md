@@ -22,20 +22,24 @@ src/styles/
 ## How It Works
 
 ### 1. Import Order (main.css)
+
 ```css
-@import './normalize.css';    /* Browser consistency */
-@import './variables.css';    /* CSS variables */
-@import './base.css';         /* Base element styles */
+@import './normalize.css'; /* Browser consistency */
+@import './variables.css'; /* CSS variables */
+@import './base.css'; /* Base element styles */
 /* Components import their own CSS */
 ```
 
 ### 2. Entry Point (main.tsx)
+
 ```typescript
-import './styles/main.css';  // Imported ONCE at app entry
+import './styles/main.css'; // Imported ONCE at app entry
 ```
 
 ### 3. Component CSS
+
 Each component imports its own stylesheet:
+
 ```typescript
 import '../styles/BreathingApp.css';
 ```
@@ -45,6 +49,7 @@ import '../styles/BreathingApp.css';
 All design tokens are defined in [variables.css](src/styles/variables.css:1). Use these instead of hard-coded values!
 
 ### Colors
+
 ```css
 var(--color-primary)         /* #22d3ee - Cyan */
 var(--color-primary-dark)    /* #06b6d4 - Dark cyan */
@@ -55,6 +60,7 @@ var(--color-bg-light)        /* #334155 - Light slate */
 ```
 
 ### Spacing
+
 ```css
 var(--spacing-xs)    /* 0.25rem */
 var(--spacing-sm)    /* 0.5rem */
@@ -65,6 +71,7 @@ var(--spacing-2xl)   /* 3rem */
 ```
 
 ### Typography
+
 ```css
 var(--font-size-base)         /* 1rem */
 var(--font-size-2xl)          /* 1.5rem */
@@ -73,6 +80,7 @@ var(--font-weight-semibold)   /* 600 */
 ```
 
 ### Shadows
+
 ```css
 var(--shadow-lg)             /* Standard shadow */
 var(--shadow-primary-lg)     /* Cyan glowing shadow */
@@ -80,6 +88,7 @@ var(--shadow-primary-xl)     /* Larger cyan glow */
 ```
 
 ### Transitions
+
 ```css
 var(--transition-fast)    /* 150ms ease */
 var(--transition-base)    /* 300ms ease */
@@ -87,6 +96,7 @@ var(--transition-slow)    /* 500ms ease */
 ```
 
 ### Border Radius
+
 ```css
 var(--radius-sm)      /* 0.25rem */
 var(--radius-md)      /* 0.5rem */
@@ -97,6 +107,7 @@ var(--radius-full)    /* 9999px - pill shape */
 ## Example Usage
 
 ### Before (hard-coded values)
+
 ```css
 .button {
   padding: 0.5rem 1.5rem;
@@ -107,6 +118,7 @@ var(--radius-full)    /* 9999px - pill shape */
 ```
 
 ### After (using variables)
+
 ```css
 .button {
   padding: var(--spacing-sm) var(--spacing-lg);
@@ -131,7 +143,7 @@ To create a new theme, you can override CSS variables:
 
 ```css
 /* Light theme example */
-[data-theme="light"] {
+[data-theme='light'] {
   --color-primary: #0891b2;
   --color-bg-dark: #ffffff;
   --color-bg-medium: #f1f5f9;
@@ -140,6 +152,7 @@ To create a new theme, you can override CSS variables:
 ```
 
 Then toggle with:
+
 ```typescript
 document.documentElement.setAttribute('data-theme', 'light');
 ```

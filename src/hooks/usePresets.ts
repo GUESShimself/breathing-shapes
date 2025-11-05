@@ -6,7 +6,7 @@ import {
   addPreset as addPresetToStorage,
   updatePreset as updatePresetInStorage,
   deletePreset as deletePresetFromStorage,
-  setSelectedPreset as setSelectedPresetInStorage
+  setSelectedPreset as setSelectedPresetInStorage,
 } from '../lib/storage';
 import { getDefaultPresetStorage } from '../data/defaultPresets';
 
@@ -49,27 +49,28 @@ export const usePresets = () => {
   const updatePreset = useCallback((id: string, updates: Partial<BreathingPattern>) => {
     const success = updatePresetInStorage(id, updates);
     if (success) {
-      setPresets(prev =>
-        prev.map(p => (p.id === id ? { ...p, ...updates } : p))
-      );
+      setPresets(prev => prev.map(p => (p.id === id ? { ...p, ...updates } : p)));
     }
     return success;
   }, []);
 
   // Delete a preset
-  const deletePreset = useCallback((id: string) => {
-    const success = deletePresetFromStorage(id);
-    if (success) {
-      setPresets(prev => prev.filter(p => p.id !== id));
-      // If deleted preset was selected, select the first one
-      if (selectedPresetId === id && presets.length > 1) {
-        const newSelectedId = presets[0].id;
-        setSelectedPresetInStorage(newSelectedId);
-        setSelectedPresetIdState(newSelectedId);
+  const deletePreset = useCallback(
+    (id: string) => {
+      const success = deletePresetFromStorage(id);
+      if (success) {
+        setPresets(prev => prev.filter(p => p.id !== id));
+        // If deleted preset was selected, select the first one
+        if (selectedPresetId === id && presets.length > 1) {
+          const newSelectedId = presets[0].id;
+          setSelectedPresetInStorage(newSelectedId);
+          setSelectedPresetIdState(newSelectedId);
+        }
       }
-    }
-    return success;
-  }, [selectedPresetId, presets]);
+      return success;
+    },
+    [selectedPresetId, presets]
+  );
 
   // Select a preset
   const selectPreset = useCallback((id: string) => {
@@ -81,13 +82,16 @@ export const usePresets = () => {
   }, []);
 
   // Toggle favorite status
-  const toggleFavorite = useCallback((id: string) => {
-    const preset = presets.find(p => p.id === id);
-    if (preset) {
-      return updatePreset(id, { isFavorite: !preset.isFavorite });
-    }
-    return false;
-  }, [presets, updatePreset]);
+  const toggleFavorite = useCallback(
+    (id: string) => {
+      const preset = presets.find(p => p.id === id);
+      if (preset) {
+        return updatePreset(id, { isFavorite: !preset.isFavorite });
+      }
+      return false;
+    },
+    [presets, updatePreset]
+  );
 
   // Reset to defaults
   const resetToDefaults = useCallback(() => {
@@ -110,6 +114,6 @@ export const usePresets = () => {
     deletePreset,
     selectPreset,
     toggleFavorite,
-    resetToDefaults
+    resetToDefaults,
   };
 };

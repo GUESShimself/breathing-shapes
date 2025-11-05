@@ -28,7 +28,7 @@ export const BreathingVisualization: React.FC<BreathingVisualizationProps> = ({
   phases,
   scale,
   glowIntensity,
-  cumulativeProgress
+  cumulativeProgress,
 }) => {
   // Memoize expensive calculations
   const circlePos: Position = useMemo(
@@ -36,13 +36,17 @@ export const BreathingVisualization: React.FC<BreathingVisualizationProps> = ({
     [breathingType, currentPhase, phaseProgress]
   );
 
-  const shapePath = useMemo(
-    () => getShapePath(breathingType),
-    [breathingType]
-  );
+  const shapePath = useMemo(() => getShapePath(breathingType), [breathingType]);
 
   const trailDashArray = useMemo(
-    () => calculateTrailDashArray(breathingType, currentPhase, phaseProgress, phases, cumulativeProgress),
+    () =>
+      calculateTrailDashArray(
+        breathingType,
+        currentPhase,
+        phaseProgress,
+        phases,
+        cumulativeProgress
+      ),
     [breathingType, currentPhase, phaseProgress, phases, cumulativeProgress]
   );
 
@@ -69,25 +73,25 @@ export const BreathingVisualization: React.FC<BreathingVisualizationProps> = ({
         <defs>
           {/* Warm glow filter for inhale */}
           <filter id="glow-warm" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="12" result="coloredBlur"/>
-            <feFlood floodColor="#ff8a65" floodOpacity="1" result="warmColor"/>
-            <feComposite in="warmColor" in2="coloredBlur" operator="in" result="coloredGlow"/>
+            <feGaussianBlur stdDeviation="12" result="coloredBlur" />
+            <feFlood floodColor="#ff8a65" floodOpacity="1" result="warmColor" />
+            <feComposite in="warmColor" in2="coloredBlur" operator="in" result="coloredGlow" />
             <feMerge>
-              <feMergeNode in="coloredGlow"/>
-              <feMergeNode in="coloredGlow"/>
-              <feMergeNode in="SourceGraphic"/>
+              <feMergeNode in="coloredGlow" />
+              <feMergeNode in="coloredGlow" />
+              <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
 
           {/* Cool glow filter for exhale */}
           <filter id="glow-cool" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="12" result="coloredBlur"/>
-            <feFlood floodColor="#22d3ee" floodOpacity="1" result="coolColor"/>
-            <feComposite in="coolColor" in2="coloredBlur" operator="in" result="coloredGlow"/>
+            <feGaussianBlur stdDeviation="12" result="coloredBlur" />
+            <feFlood floodColor="#22d3ee" floodOpacity="1" result="coolColor" />
+            <feComposite in="coolColor" in2="coloredBlur" operator="in" result="coloredGlow" />
             <feMerge>
-              <feMergeNode in="coloredGlow"/>
-              <feMergeNode in="coloredGlow"/>
-              <feMergeNode in="SourceGraphic"/>
+              <feMergeNode in="coloredGlow" />
+              <feMergeNode in="coloredGlow" />
+              <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
         </defs>
@@ -97,89 +101,89 @@ export const BreathingVisualization: React.FC<BreathingVisualizationProps> = ({
           {/* Scale group - centered at 200, 175 */}
           <g transform={`translate(200 175) scale(${scale}) translate(-200 -175)`}>
             {/* Layered breathing ripples - 3 staggered layers */}
-          {isActive && glowIntensity > 0.1 && (
-            <>
-              <path
-                d={shapePath}
-                className="breathing-ripple breathing-ripple-1"
-                style={{
-                  opacity: glowIntensity * 0.3,
-                  stroke: glowColor,
-                  fill: 'none',
-                  strokeWidth: 3
-                }}
-              />
-              <path
-                d={shapePath}
-                className="breathing-ripple breathing-ripple-2"
-                style={{
-                  opacity: glowIntensity * 0.2,
-                  stroke: glowColor,
-                  fill: 'none',
-                  strokeWidth: 2
-                }}
-              />
-              <path
-                d={shapePath}
-                className="breathing-ripple breathing-ripple-3"
-                style={{
-                  opacity: glowIntensity * 0.1,
-                  stroke: glowColor,
-                  fill: 'none',
-                  strokeWidth: 1
-                }}
-              />
-            </>
-          )}
+            {isActive && glowIntensity > 0.1 && (
+              <>
+                <path
+                  d={shapePath}
+                  className="breathing-ripple breathing-ripple-1"
+                  style={{
+                    opacity: glowIntensity * 0.3,
+                    stroke: glowColor,
+                    fill: 'none',
+                    strokeWidth: 3,
+                  }}
+                />
+                <path
+                  d={shapePath}
+                  className="breathing-ripple breathing-ripple-2"
+                  style={{
+                    opacity: glowIntensity * 0.2,
+                    stroke: glowColor,
+                    fill: 'none',
+                    strokeWidth: 2,
+                  }}
+                />
+                <path
+                  d={shapePath}
+                  className="breathing-ripple breathing-ripple-3"
+                  style={{
+                    opacity: glowIntensity * 0.1,
+                    stroke: glowColor,
+                    fill: 'none',
+                    strokeWidth: 1,
+                  }}
+                />
+              </>
+            )}
 
-          {/* Dim base outline */}
-          <path
-            d={shapePath}
-            className="shape-outline"
-            style={{ opacity: 0.3 + (glowIntensity * 0.3) }}
-          />
-
-          {/* Bright trailing segment */}
-          {isActive && (
+            {/* Dim base outline */}
             <path
               d={shapePath}
-              className="shape-trail"
-              pathLength={pathLength}
-              strokeDasharray={trailDashArray}
-              strokeDashoffset={trailDashOffset}
-              style={{ stroke: glowColor }}
+              className="shape-outline"
+              style={{ opacity: 0.3 + glowIntensity * 0.3 }}
             />
-          )}
 
-          {/* Pulse circles */}
-          {shouldPulse && (
-            <>
-              <circle
-                cx={circlePos.x}
-                cy={circlePos.y}
-                r="6"
-                className="pulse pulse-1"
+            {/* Bright trailing segment */}
+            {isActive && (
+              <path
+                d={shapePath}
+                className="shape-trail"
+                pathLength={pathLength}
+                strokeDasharray={trailDashArray}
+                strokeDashoffset={trailDashOffset}
                 style={{ stroke: glowColor }}
               />
-              <circle
-                cx={circlePos.x}
-                cy={circlePos.y}
-                r="6"
-                className="pulse pulse-2"
-                style={{ stroke: glowColor }}
-              />
-            </>
-          )}
+            )}
 
-          {/* Main circle with colored glow */}
-          <circle
-            cx={circlePos.x}
-            cy={circlePos.y}
-            r={shouldPulse ? CIRCLE_RADIUS_PULSE : CIRCLE_RADIUS_NORMAL}
-            className="main-circle"
-            style={{ fill: glowColor }}
-            filter={isWarmPhase ? 'url(#glow-warm)' : 'url(#glow-cool)'}
-          />
+            {/* Pulse circles */}
+            {shouldPulse && (
+              <>
+                <circle
+                  cx={circlePos.x}
+                  cy={circlePos.y}
+                  r="6"
+                  className="pulse pulse-1"
+                  style={{ stroke: glowColor }}
+                />
+                <circle
+                  cx={circlePos.x}
+                  cy={circlePos.y}
+                  r="6"
+                  className="pulse pulse-2"
+                  style={{ stroke: glowColor }}
+                />
+              </>
+            )}
+
+            {/* Main circle with colored glow */}
+            <circle
+              cx={circlePos.x}
+              cy={circlePos.y}
+              r={shouldPulse ? CIRCLE_RADIUS_PULSE : CIRCLE_RADIUS_NORMAL}
+              className="main-circle"
+              style={{ fill: glowColor }}
+              filter={isWarmPhase ? 'url(#glow-warm)' : 'url(#glow-cool)'}
+            />
           </g>
         </g>
       </svg>

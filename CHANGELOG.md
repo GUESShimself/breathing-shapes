@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### TODO
+
 - Support variable phase durations in animation
 - Add preset editor (Phase 2)
 - Add history and statistics tracking
@@ -16,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.1] - 2025-01-03
 
 ### Added
+
 - **Carousel Fade Animation**
   - Smooth fade-out and slide-up animation when breathing session starts
   - Two-stage animation: fade/slide (500ms) then height collapse (500ms)
@@ -26,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Debug CSS variables for development
 
 ### Changed
+
 - Reduced visualization SVG height from 350px to 300px for better mobile layout
 - Moved shapes up 50px (center Y: 200 → 150) to prevent clipping
 - Adjusted square shape coordinates for new positioning
@@ -33,12 +36,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved carousel spacing with reduced bottom margin
 
 ### Fixed
+
 - Square shape no longer gets cut off when rotating in smaller viewport
 - Visualization now properly centered in reduced height SVG
 
 ## [0.2.0] - 2025-01-01
 
 ### Added
+
 - **Preset System Foundation**
   - TypeScript type definitions for breathing patterns and presets
   - LocalStorage persistence layer for preset CRUD operations
@@ -55,17 +60,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Deployment documentation
 
 ### Changed
+
 - Replaced `BreathingTypeSelector` buttons with `PresetCarousel`
 - Breathing animation now driven by selected preset data
 - Updated `BreathingApp` to integrate with preset system
 
 ### Removed
+
 - Hardcoded breathing type selection
 - Direct use of `BreathingTypeSelector` component (still exists in codebase)
 
 ## [0.1.0] - 2024-12-XX
 
 ### Added
+
 - **Project Structure**
   - Modular component architecture
   - Separated components: `BreathingApp`, `BreathingVisualization`, `PhaseIndicator`, `ControlButtons`, `BreathingTypeSelector`
@@ -92,6 +100,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Deployment guide
 
 ### Technical Improvements
+
 - TypeScript throughout
 - Performance optimizations with useReducer and useMemo
 - All magic numbers extracted to constants

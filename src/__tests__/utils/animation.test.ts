@@ -13,7 +13,7 @@ import { describe, it, expect } from 'vitest';
 import {
   calculateTrailDashArray,
   calculateTrailDashOffset,
-  calculateDegreesPerMs
+  calculateDegreesPerMs,
 } from '@utils/animation';
 import { PATH_LENGTHS, TRAIL_LENGTH_RATIO } from '@constants/breathing';
 

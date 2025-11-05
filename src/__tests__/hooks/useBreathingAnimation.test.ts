@@ -23,14 +23,14 @@ import type { AnimationState, AnimationAction } from '@types/breathing';
 const calculateScale = (phase: number, progress: number, totalPhases: number): number => {
   if (totalPhases === 3) {
     // Triangle: Inhale, Hold, Exhale
-    if (phase === 0) return 0.95 + (progress * 0.15); // Inhale
+    if (phase === 0) return 0.95 + progress * 0.15; // Inhale
     if (phase === 1) return 1.1; // Hold
-    return 1.1 - (progress * 0.15); // Exhale
+    return 1.1 - progress * 0.15; // Exhale
   } else {
     // Square: Inhale, Hold, Exhale, Hold
-    if (phase === 0) return 0.95 + (progress * 0.15); // Inhale
+    if (phase === 0) return 0.95 + progress * 0.15; // Inhale
     if (phase === 1) return 1.1; // Hold Full
-    if (phase === 2) return 1.1 - (progress * 0.15); // Exhale
+    if (phase === 2) return 1.1 - progress * 0.15; // Exhale
     return 0.95; // Hold Empty
   }
 };
@@ -40,12 +40,12 @@ const calculateGlowIntensity = (phase: number, progress: number, totalPhases: nu
     // Triangle: Inhale, Hold, Exhale
     if (phase === 0) return progress * 1.0; // Inhale: 0 → 1.0
     if (phase === 1) return 1.0; // Hold: bright
-    return 1.0 - (progress * 0.7); // Exhale: 1.0 → 0.3
+    return 1.0 - progress * 0.7; // Exhale: 1.0 → 0.3
   } else {
     // Square: Inhale, Hold, Exhale, Hold
     if (phase === 0) return progress * 1.0; // Inhale: 0 → 1.0
     if (phase === 1) return 1.0; // Hold Full: bright
-    if (phase === 2) return 1.0 - (progress * 0.7); // Exhale: 1.0 → 0.3
+    if (phase === 2) return 1.0 - progress * 0.7; // Exhale: 1.0 → 0.3
     return 0.3; // Hold Empty: dim
   }
 };
@@ -125,7 +125,7 @@ describe('calculateScale', () => {
       { phases: 4, phase: 0, progress: 0.2 },
       { phases: 4, phase: 1, progress: 0.8 },
       { phases: 4, phase: 2, progress: 0.9 },
-      { phases: 4, phase: 3, progress: 0.1 }
+      { phases: 4, phase: 3, progress: 0.1 },
     ];
 
     testCases.forEach(({ phases, phase, progress }) => {
@@ -213,7 +213,7 @@ describe('calculateGlowIntensity', () => {
       { phases: 4, phase: 0, progress: 0.2 },
       { phases: 4, phase: 1, progress: 0.8 },
       { phases: 4, phase: 2, progress: 0.9 },
-      { phases: 4, phase: 3, progress: 0.1 }
+      { phases: 4, phase: 3, progress: 0.1 },
     ];
 
     testCases.forEach(({ phases, phase, progress }) => {
@@ -251,7 +251,7 @@ describe('Animation State Behavior', () => {
       { phase: 1, progress: 0.5, desc: 'Mid hold' },
       { phase: 2, progress: 0, desc: 'Start exhale' },
       { phase: 2, progress: 0.5, desc: 'Mid exhale' },
-      { phase: 2, progress: 1, desc: 'End exhale' }
+      { phase: 2, progress: 1, desc: 'End exhale' },
     ];
 
     checkpoints.forEach(({ phase, progress, desc }) => {

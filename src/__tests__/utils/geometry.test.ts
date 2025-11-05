@@ -7,16 +7,12 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import {
-  getTrianglePoints,
-  getCirclePosition,
-  getShapePath
-} from '@utils/geometry';
+import { getTrianglePoints, getCirclePosition, getShapePath } from '@utils/geometry';
 import {
   TRIANGLE_CENTER_X,
   TRIANGLE_CENTER_Y,
   TRIANGLE_RADIUS,
-  SQUARE_POINTS
+  SQUARE_POINTS,
 } from '@constants/breathing';
 
 describe('getTrianglePoints', () => {
@@ -108,9 +104,7 @@ describe('getCirclePosition', () => {
 
     it('should interpolate linearly along each edge', () => {
       const progressValues = [0, 0.25, 0.5, 0.75, 1];
-      const positions = progressValues.map(progress =>
-        getCirclePosition('triangle', 1, progress)
-      );
+      const positions = progressValues.map(progress => getCirclePosition('triangle', 1, progress));
 
       // Check that positions are in a straight line
       for (let i = 1; i < positions.length - 1; i++) {
@@ -209,7 +203,7 @@ describe('getCirclePosition', () => {
       { type: 'triangle' as const, phase: 2, progress: 1 },
       { type: 'square' as const, phase: 0, progress: 0 },
       { type: 'square' as const, phase: 2, progress: 0.75 },
-      { type: 'square' as const, phase: 3, progress: 1 }
+      { type: 'square' as const, phase: 3, progress: 1 },
     ];
 
     testCases.forEach(({ type, phase, progress }) => {
