@@ -7,11 +7,13 @@ Your app is now configured for easy deployment to GitHub Pages!
 ### Option 1: Automated Deployment (Recommended)
 
 1. **Install dependencies** (if you haven't already):
+
    ```bash
    npm install
    ```
 
 2. **Initialize Git repository** (if not already done):
+
    ```bash
    git init
    git add .
@@ -24,6 +26,7 @@ Your app is now configured for easy deployment to GitHub Pages!
    - Don't initialize with README (you already have one)
 
 4. **Connect your local repo to GitHub**:
+
    ```bash
    git remote add origin https://github.com/YOUR-USERNAME/breathing-shapes.git
    git branch -M main
@@ -31,6 +34,7 @@ Your app is now configured for easy deployment to GitHub Pages!
    ```
 
 5. **Deploy with one command**:
+
    ```bash
    npm run deploy
    ```
@@ -48,7 +52,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: read
@@ -87,6 +91,7 @@ jobs:
 ```
 
 Then:
+
 1. Push this file to GitHub
 2. Go to Settings → Pages
 3. Set Source to "GitHub Actions"
@@ -99,11 +104,13 @@ Then:
 If you have a custom domain:
 
 1. Update [vite.config.ts](vite.config.ts:9):
+
    ```typescript
    base: '/',
    ```
 
 2. Add a `CNAME` file in the `public/` folder:
+
    ```
    yourdomain.com
    ```
@@ -138,17 +145,21 @@ npm run deploy   # Build and deploy to GitHub Pages
 ## Troubleshooting
 
 ### Blank page after deployment
+
 - Check your `vite.config.ts` base path matches your repo name
 - Make sure GitHub Pages is enabled in repo settings
 - Check browser console for 404 errors
 
 ### Build fails
+
 ```bash
 npm run build
 ```
+
 Fix any TypeScript errors before deploying
 
 ### Deploy permission denied
+
 - Make sure you've pushed to GitHub first
 - Check that `gh-pages` package is installed: `npm install`
 
@@ -167,6 +178,7 @@ npm run deploy        # If using gh-pages package
 ## Live Site URL
 
 After deployment, your app will be available at:
+
 - **Project site**: `https://YOUR-USERNAME.github.io/REPO-NAME/`
 - **Custom domain**: Whatever you configured
 

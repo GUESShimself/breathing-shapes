@@ -3,8 +3,9 @@
   margin-bottom: var(--spacing-md);
   overflow: hidden;
   max-height: 1000px;
-  transition: max-height var(--transition-out-slow) 500ms,
-              margin-bottom var(--transition-out-slow) 500ms;
+  transition:
+    max-height var(--transition-out-slow),
+    margin-bottom var(--transition-out-fast);
 }
 
 .preset-carousel-hidden {
@@ -14,8 +15,10 @@
 }
 
 .preset-carousel-inner {
-  transition: transform var(--transition-out-slow),
-              opacity var(--transition-out-slow);
+  transition:
+    transform var(--transition-out-slow),
+    opacity var(--transition-out-base);
+  /* transition-delay: 200ms; */
   transform: translateY(0);
   opacity: 1;
 }

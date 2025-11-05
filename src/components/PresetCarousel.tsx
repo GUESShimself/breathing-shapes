@@ -14,7 +14,7 @@ export const PresetCarousel: React.FC<PresetCarouselProps> = ({
   presets,
   selectedPresetId,
   onSelectPreset,
-  isActive
+  isActive,
 }) => {
   return (
     <div className={`preset-carousel ${isActive ? 'preset-carousel-hidden' : ''}`}>

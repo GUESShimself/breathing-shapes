@@ -13,7 +13,7 @@ export const ControlButtons: React.FC<ControlButtonsProps> = ({
   isActive,
   onStart,
   onStop,
-  onRestart
+  onRestart,
 }) => {
   return (
     <div className="control-buttons">

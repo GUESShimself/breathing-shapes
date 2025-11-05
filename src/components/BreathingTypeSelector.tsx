@@ -9,7 +9,7 @@ interface BreathingTypeSelectorProps {
 
 export const BreathingTypeSelector: React.FC<BreathingTypeSelectorProps> = ({
   breathingType,
-  onTypeChange
+  onTypeChange,
 }) => {
   return (
     <div className="type-selector">

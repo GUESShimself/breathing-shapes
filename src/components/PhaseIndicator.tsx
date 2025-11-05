@@ -8,15 +8,10 @@ interface PhaseIndicatorProps {
   currentPhase: number;
 }
 
-export const PhaseIndicator: React.FC<PhaseIndicatorProps> = ({
-  breathingType,
-  currentPhase
-}) => {
+export const PhaseIndicator: React.FC<PhaseIndicatorProps> = ({ breathingType, currentPhase }) => {
   return (
     <div className="phase-indicator">
-      <p className="phase-text">
-        {PHASE_LABELS[breathingType][currentPhase]}
-      </p>
+      <p className="phase-text">{PHASE_LABELS[breathingType][currentPhase]}</p>
     </div>
   );
 };

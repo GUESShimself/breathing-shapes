@@ -8,11 +8,7 @@ interface PresetCardProps {
   onSelect: (id: string) => void;
 }
 
-export const PresetCard: React.FC<PresetCardProps> = ({
-  preset,
-  isSelected,
-  onSelect
-}) => {
+export const PresetCard: React.FC<PresetCardProps> = ({ preset, isSelected, onSelect }) => {
   const totalSeconds = Math.round(preset.metadata.totalDuration / 1000);
 
   return (
