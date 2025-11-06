@@ -1,6 +1,16 @@
 .phase-indicator {
   text-align: center;
   margin-bottom: var(--spacing-xl);
+  opacity: 1;
+  transition: opacity 0.4s ease-in;
+}
+
+.phase-indicator--hidden {
+  opacity: 0;
+}
+
+.phase-indicator--visible {
+  opacity: 1;
 }
 
 .phase-text {

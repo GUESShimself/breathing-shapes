@@ -77,7 +77,7 @@ export const BreathingApp: React.FC = () => {
         cumulativeProgress={state.cumulativeProgress}
       />
 
-      <PhaseIndicator breathingType={breathingType} currentPhase={state.currentPhase} />
+      <PhaseIndicator breathingType={breathingType} currentPhase={state.currentPhase} isActive={isActive} />
 
       <ControlButtons
         isActive={isActive}
