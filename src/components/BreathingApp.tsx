@@ -7,6 +7,7 @@ import { BreathingVisualization } from './BreathingVisualization';
 import { PhaseIndicator } from './PhaseIndicator';
 import { ControlButtons } from './ControlButtons';
 import { PresetCarousel } from './PresetCarousel';
+import { Footer } from './Footer';
 import '../styles/BreathingApp.css';
 
 export const BreathingApp: React.FC = () => {
@@ -84,6 +85,8 @@ export const BreathingApp: React.FC = () => {
         onStop={handleStop}
         onRestart={handleRestart}
       />
+
+      <Footer isActive={isActive} />
     </div>
   );
 };

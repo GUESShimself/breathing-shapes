@@ -62,17 +62,17 @@ export const BreathingVisualization: React.FC<BreathingVisualizationProps> = ({
   // Square (4 phases): Phase 0 = Inhale (warm), Phase 1 = Hold Full (warm), Phase 2 = Exhale (cool), Phase 3 = Hold Empty (cool)
   const isWarmPhase = currentPhase === 0 || currentPhase === 1;
 
-  // Calculate glow color based on phase and intensity
+  // Calculate glow color based on phase with constant intensity
   const glowColor = isWarmPhase
-    ? `rgba(255, 138, 101, ${glowIntensity})` // Warm coral
-    : `rgba(34, 211, 238, ${glowIntensity})`; // Cool cyan
+    ? `rgba(255, 138, 101, 1)` // Warm coral - constant full intensity
+    : `rgba(34, 211, 238, 1)`; // Cool cyan - constant full intensity
 
   return (
     <div className="visualization-container">
       <svg width="400" height="350" viewBox="0 0 400 350">
         <defs>
           {/* Warm glow filter for inhale */}
-          <filter id="glow-warm" x="-50%" y="-50%" width="200%" height="200%">
+          <filter id="glow-warm" x="-200%" y="-200%" width="500%" height="500%">
             <feGaussianBlur stdDeviation="12" result="coloredBlur" />
             <feFlood floodColor="#ff8a65" floodOpacity="1" result="warmColor" />
             <feComposite in="warmColor" in2="coloredBlur" operator="in" result="coloredGlow" />
@@ -84,7 +84,7 @@ export const BreathingVisualization: React.FC<BreathingVisualizationProps> = ({
           </filter>
 
           {/* Cool glow filter for exhale */}
-          <filter id="glow-cool" x="-50%" y="-50%" width="200%" height="200%">
+          <filter id="glow-cool" x="-200%" y="-200%" width="500%" height="500%">
             <feGaussianBlur stdDeviation="12" result="coloredBlur" />
             <feFlood floodColor="#22d3ee" floodOpacity="1" result="coolColor" />
             <feComposite in="coolColor" in2="coloredBlur" operator="in" result="coloredGlow" />
