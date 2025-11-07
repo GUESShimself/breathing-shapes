@@ -11,7 +11,7 @@ interface PhaseIndicatorProps {
 
 export const PhaseIndicator: React.FC<PhaseIndicatorProps> = ({ breathingType, currentPhase, isActive }) => {
   return (
-    <div className={`phase-indicator ${isActive ? 'phase-indicator--visible' : 'phase-indicator--hidden'}`}>
+    <div className={`phase-indicator ${!isActive ? 'hidden' : ''}`}>
       <p className="phase-text">{PHASE_LABELS[breathingType][currentPhase]}</p>
     </div>
   );

@@ -36,11 +36,6 @@ export const BreathingApp: React.FC = () => {
     reset();
   };
 
-  const handleRestart = () => {
-    reset();
-    setIsActive(true);
-  };
-
   const handlePresetChange = (id: string) => {
     selectPreset(id);
     setIsActive(false);
@@ -64,6 +59,8 @@ export const BreathingApp: React.FC = () => {
         isActive={isActive}
       />
 
+      <PhaseIndicator breathingType={breathingType} currentPhase={state.currentPhase} isActive={isActive} />
+
       <BreathingVisualization
         breathingType={breathingType}
         currentPhase={state.currentPhase}
@@ -77,13 +74,10 @@ export const BreathingApp: React.FC = () => {
         cumulativeProgress={state.cumulativeProgress}
       />
 
-      <PhaseIndicator breathingType={breathingType} currentPhase={state.currentPhase} isActive={isActive} />
-
       <ControlButtons
         isActive={isActive}
         onStart={handleStart}
         onStop={handleStop}
-        onRestart={handleRestart}
       />
 
       <Footer isActive={isActive} />

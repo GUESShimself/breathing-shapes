@@ -8,7 +8,7 @@
   fill: none;
   stroke: var(--color-bg-lighter);
   stroke-width: 3;
-  opacity: 0.5;
+  opacity: 0.15;
 }
 
 /* Bright trailing segment */
@@ -56,19 +56,52 @@
 /* Breathing ripples - layered expanding effect */
 .breathing-ripple {
   transform-origin: center;
-  transition:
-    transform 0.3s ease-out,
-    opacity 0.3s ease-out;
 }
 
-.breathing-ripple-1 {
-  transform: scale(1.08);
+/* Pulsing ripple animations */
+@keyframes ripple-pulse-outward {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.0);
+    opacity: 0.5;
+  }
 }
 
-.breathing-ripple-2 {
-  transform: scale(1.16);
+@keyframes ripple-pulse-inward {
+  0% {
+    transform: scale(1.0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
 }
 
-.breathing-ripple-3 {
-  transform: scale(1.24);
+/* Apply animations based on phase */
+.breathing-ripple.pulse-outward {
+  animation: ripple-pulse-outward 4s ease-out infinite;
+}
+
+.breathing-ripple.pulse-inward {
+  animation: ripple-pulse-inward 4s ease-in infinite;
+}
+
+/* Staggered delays for cascading wave effect */
+.breathing-ripple-1.pulse-outward,
+.breathing-ripple-1.pulse-inward {
+  animation-delay: 0s;
+}
+
+.breathing-ripple-2.pulse-outward,
+.breathing-ripple-2.pulse-inward {
+  animation-delay: 1s;
+}
+
+.breathing-ripple-3.pulse-outward,
+.breathing-ripple-3.pulse-inward {
+  animation-delay: 2s;
 }

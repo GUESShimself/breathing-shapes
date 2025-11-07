@@ -18,6 +18,30 @@ interface BreathingVisualizationProps {
   cumulativeProgress: number;
 }
 
+// Helper to calculate ripple scales and visibility based on current phase
+const getRippleScales = (currentPhase: number, phases: number, breathingType: BreathingType) => {
+  // Determine if current phase is a hold phase
+  const isHold = phases === 3 ? currentPhase === 1 : (currentPhase === 1 || currentPhase === 3);
+  // Phase 2 is always exhale
+  const isExhale = currentPhase === 2;
+
+  // Different scale values for triangle (larger spacing) vs square
+  const scales = breathingType === 'triangle'
+    ? { outward: [1.12, 1.24, 1.36], inward: [0.88, 0.76, 0.64] }
+    : { outward: [1.08, 1.16, 1.24], inward: [0.92, 0.84, 0.76] };
+
+  if (isHold) {
+    // Hold phases: fade ripples to invisible
+    return { scale1: scales.outward[0], scale2: scales.outward[1], scale3: scales.outward[2], visibilityFactor: 0 };
+  } else if (isExhale) {
+    // Exhale: ripples scale INWARD (smaller than base shape)
+    return { scale1: scales.inward[0], scale2: scales.inward[1], scale3: scales.inward[2], visibilityFactor: 1 };
+  } else {
+    // Inhale: ripples scale OUTWARD (larger than base shape)
+    return { scale1: scales.outward[0], scale2: scales.outward[1], scale3: scales.outward[2], visibilityFactor: 1 };
+  }
+};
+
 export const BreathingVisualization: React.FC<BreathingVisualizationProps> = ({
   breathingType,
   currentPhase,
@@ -67,6 +91,9 @@ export const BreathingVisualization: React.FC<BreathingVisualizationProps> = ({
     ? `rgba(255, 138, 101, 1)` // Warm coral - constant full intensity
     : `rgba(34, 211, 238, 1)`; // Cool cyan - constant full intensity
 
+  // Get ripple scales based on current phase and breathing type
+  const rippleScales = getRippleScales(currentPhase, phases, breathingType);
+
   return (
     <div className="visualization-container">
       <svg width="400" height="350" viewBox="0 0 400 350">
@@ -105,32 +132,44 @@ export const BreathingVisualization: React.FC<BreathingVisualizationProps> = ({
               <>
                 <path
                   d={shapePath}
-                  className="breathing-ripple breathing-ripple-1"
+                  className={`breathing-ripple breathing-ripple-1 ${
+                    currentPhase === 0 ? 'pulse-outward' :
+                    currentPhase === 2 ? 'pulse-inward' : ''
+                  }`}
+                  filter="url(#ripple-wave-1)"
                   style={{
-                    opacity: glowIntensity * 0.3,
-                    stroke: glowColor,
+                    stroke: 'var(--color-bg-lighter)',
                     fill: 'none',
                     strokeWidth: 3,
+                    opacity: rippleScales.visibilityFactor > 0 ? undefined : 0,
                   }}
                 />
                 <path
                   d={shapePath}
-                  className="breathing-ripple breathing-ripple-2"
+                  className={`breathing-ripple breathing-ripple-2 ${
+                    currentPhase === 0 ? 'pulse-outward' :
+                    currentPhase === 2 ? 'pulse-inward' : ''
+                  }`}
+                  filter="url(#ripple-wave-2)"
                   style={{
-                    opacity: glowIntensity * 0.2,
-                    stroke: glowColor,
+                    stroke: 'var(--color-bg-lighter)',
                     fill: 'none',
                     strokeWidth: 2,
+                    opacity: rippleScales.visibilityFactor > 0 ? undefined : 0,
                   }}
                 />
                 <path
                   d={shapePath}
-                  className="breathing-ripple breathing-ripple-3"
+                  className={`breathing-ripple breathing-ripple-3 ${
+                    currentPhase === 0 ? 'pulse-outward' :
+                    currentPhase === 2 ? 'pulse-inward' : ''
+                  }`}
+                  filter="url(#ripple-wave-3)"
                   style={{
-                    opacity: glowIntensity * 0.1,
-                    stroke: glowColor,
+                    stroke: 'var(--color-bg-lighter)',
                     fill: 'none',
                     strokeWidth: 1,
+                    opacity: rippleScales.visibilityFactor > 0 ? undefined : 0,
                   }}
                 />
               </>

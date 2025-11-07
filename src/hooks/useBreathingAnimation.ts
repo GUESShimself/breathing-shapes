@@ -61,13 +61,14 @@ const animationReducer = (state: AnimationState, action: AnimationAction): Anima
 
       if (newProgress >= 1) {
         const newPhase = (state.currentPhase + 1) % phases;
+        const overflowProgress = newProgress - 1;
         return {
           ...state,
           rotation: newRotation,
-          phaseProgress: 0,
+          phaseProgress: overflowProgress,
           currentPhase: newPhase,
-          scale: calculateScale(newPhase, 0, phases),
-          glowIntensity: calculateGlowIntensity(newPhase, 0, phases),
+          scale: calculateScale(newPhase, overflowProgress, phases),
+          glowIntensity: calculateGlowIntensity(newPhase, overflowProgress, phases),
           cumulativeProgress: newCumulativeProgress,
         };
       }

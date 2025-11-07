@@ -1,22 +1,19 @@
 .phase-indicator {
   text-align: center;
-  margin-bottom: var(--spacing-xl);
-  opacity: 1;
-  transition: opacity 0.4s ease-in;
+  transition:
+    all var(--transition-out-slow);
 }
 
-.phase-indicator--hidden {
+.phase-indicator.hidden {
   opacity: 0;
-}
-
-.phase-indicator--visible {
-  opacity: 1;
+  margin-bottom: 0;
+  display: none;
 }
 
 .phase-text {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-primary-light);
+  color: var(--color-text-neutral);
   margin: 0;
   letter-spacing: 0.025em;
 }
